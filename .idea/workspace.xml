@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="CargoProjects">
+    <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cb3ef74f-a4ac-43d9-86ad-0a55eb375e02" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/socketioxide/src/value/de.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/socketioxide/src/value/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/socketioxide/src/value/ser.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e2e/socketioxide/socketioxide.rs" beforeDir="false" afterPath="$PROJECT_DIR$/e2e/socketioxide/socketioxide.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/socketioxide/src/handler/extract.rs" beforeDir="false" afterPath="$PROJECT_DIR$/socketioxide/src/handler/extract.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/socketioxide/src/io.rs" beforeDir="false" afterPath="$PROJECT_DIR$/socketioxide/src/io.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/socketioxide/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/socketioxide/src/lib.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/socketioxide/src/operators.rs" beforeDir="false" afterPath="$PROJECT_DIR$/socketioxide/src/operators.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/socketioxide/src/packet.rs" beforeDir="false" afterPath="$PROJECT_DIR$/socketioxide/src/packet.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/socketioxide/src/socket.rs" beforeDir="false" afterPath="$PROJECT_DIR$/socketioxide/src/socket.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/socketioxide/tests/concurrent_emit.rs" beforeDir="false" afterPath="$PROJECT_DIR$/socketioxide/tests/concurrent_emit.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/socketioxide/tests/connect.rs" beforeDir="false" afterPath="$PROJECT_DIR$/socketioxide/tests/connect.rs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="ldkdyrcy" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2iNvAzKPRnyfRTix782uNgbLpnO" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.rust.reset.selective.auto.import": "true",
+    "git-widget-placeholder": "Merging main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true",
+    "org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon": ""
+  }
+}]]></component>
+  <component name="RustProjectSettings">
+    <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

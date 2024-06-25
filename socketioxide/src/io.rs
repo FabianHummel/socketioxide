@@ -15,7 +15,10 @@ use crate::{
     extract::SocketRef,
     handler::ConnectHandler,
     layer::SocketIoLayer,
-    operators::{BroadcastOperators, RoomParam},
+    operators::{
+        holding::{WithBinary, WithoutBinary},
+        BroadcastOperators, RoomParam,
+    },
     service::SocketIoService,
     BroadcastError, DisconnectError,
 };
@@ -451,7 +454,7 @@ impl<A: Adapter> SocketIo<A> {
     /// }
     /// ```
     #[inline]
-    pub fn of<'a>(&self, path: impl Into<&'a str>) -> Option<BroadcastOperators<A>> {
+    pub fn of<'a>(&self, path: impl Into<&'a str>) -> Option<BroadcastOperators<WithoutBinary, A>> {
         self.get_op(path.into())
     }
 
@@ -477,7 +480,7 @@ impl<A: Adapter> SocketIo<A> {
     ///   println!("found socket on / ns in room1 with id: {}", socket.id);
     /// }
     #[inline]
-    pub fn to(&self, rooms: impl RoomParam) -> BroadcastOperators<A> {
+    pub fn to(&self, rooms: impl RoomParam) -> BroadcastOperators<WithoutBinary, A> {
         self.get_default_op().to(rooms)
     }
 
@@ -505,7 +508,7 @@ impl<A: Adapter> SocketIo<A> {
     ///   println!("found socket on / ns in room1 with id: {}", socket.id);
     /// }
     #[inline]
-    pub fn within(&self, rooms: impl RoomParam) -> BroadcastOperators<A> {
+    pub fn within(&self, rooms: impl RoomParam) -> BroadcastOperators<WithoutBinary, A> {
         self.get_default_op().within(rooms)
     }
 
@@ -538,7 +541,7 @@ impl<A: Adapter> SocketIo<A> {
     ///   println!("found socket on / ns in room1 with id: {}", socket.id);
     /// }
     #[inline]
-    pub fn except(&self, rooms: impl RoomParam) -> BroadcastOperators<A> {
+    pub fn except(&self, rooms: impl RoomParam) -> BroadcastOperators<WithoutBinary, A> {
         self.get_default_op().except(rooms)
     }
 
@@ -565,7 +568,7 @@ impl<A: Adapter> SocketIo<A> {
     ///   println!("found socket on / ns in room1 with id: {}", socket.id);
     /// }
     #[inline]
-    pub fn local(&self) -> BroadcastOperators<A> {
+    pub fn local(&self) -> BroadcastOperators<WithoutBinary, A> {
         self.get_default_op().local()
     }
 
@@ -608,7 +611,7 @@ impl<A: Adapter> SocketIo<A> {
     ///      }
     ///   });
     #[inline]
-    pub fn timeout(&self, timeout: Duration) -> BroadcastOperators<A> {
+    pub fn timeout(&self, timeout: Duration) -> BroadcastOperators<WithoutBinary, A> {
         self.get_default_op().timeout(timeout)
     }
 
@@ -635,9 +638,12 @@ impl<A: Adapter> SocketIo<A> {
     ///   .to("room3")
     ///   .except("room2")
     ///   .bin(vec![Bytes::from_static(&[1, 2, 3, 4])])
-    ///   .emit("test", ());
+    ///   .emit("test", ().into());
     #[inline]
-    pub fn bin(&self, binary: impl IntoIterator<Item = impl Into<Bytes>>) -> BroadcastOperators<A> {
+    pub fn bin(
+        &self,
+        binary: impl IntoIterator<Item = impl Into<Bytes>>,
+    ) -> BroadcastOperators<WithBinary, A> {
         self.get_default_op().bin(binary)
     }
 
@@ -867,7 +873,7 @@ impl<A: Adapter> SocketIo<A> {
 
     /// Returns a new operator on the given namespace
     #[inline(always)]
-    fn get_op(&self, path: &str) -> Option<BroadcastOperators<A>> {
+    fn get_op(&self, path: &str) -> Option<BroadcastOperators<WithoutBinary, A>> {
         self.0
             .get_ns(path)
             .map(|ns| BroadcastOperators::new(ns).broadcast())
@@ -879,7 +885,7 @@ impl<A: Adapter> SocketIo<A> {
     ///
     /// If the **default namespace "/" is not found** this fn will panic!
     #[inline(always)]
-    fn get_default_op(&self) -> BroadcastOperators<A> {
+    fn get_default_op(&self) -> BroadcastOperators<WithoutBinary, A> {
         self.get_op("/").expect("default namespace not found")
     }
 }

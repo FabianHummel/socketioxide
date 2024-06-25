@@ -2,9 +2,8 @@ mod utils;
 
 use bytes::Bytes;
 use engineioxide::Packet::*;
-use socketioxide::{
-    extract::SocketRef, handler::ConnectHandler, packet::Packet, SendError, SocketError, SocketIo,
-};
+use serde_json::Value;
+use socketioxide::{extract::SocketRef, handler::ConnectHandler, packet::Packet, SendError, SocketError, SocketIo};
 use tokio::sync::mpsc;
 
 fn create_msg(
@@ -44,13 +43,13 @@ pub async fn connect_middleware() {
 
             assert!(matches!(
                 s.bin(vec![Bytes::from_static(&[0, 1, 2, 3])])
-                    .emit("test", ()),
-                Err(SendError::Socket(SocketError::Closed(())))
+                    .emit("test", Value::Null),
+                Err(SendError::Socket(SocketError::Closed(Value::Null)))
             ));
             assert!(matches!(
                 s.bin(vec![Bytes::from_static(&[0, 1, 2, 3])])
-                    .emit_with_ack::<(), ()>("test", ()),
-                Err(SendError::Socket(SocketError::Closed(())))
+                    .emit_with_ack::<()>("test", Value::Null),
+                Err(SendError::Socket(SocketError::Closed(Value::Null)))
             ));
 
             tx1.try_send(i).unwrap();
